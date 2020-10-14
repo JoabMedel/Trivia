@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', sans-serif; 
+} 
+
+.my-background {
+    background-image: url(/img/BackgroundPrincipal.jpg);
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(122, 97, 25, 0.644);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+h1{
+    font-weight: bolder;
+    font-size: 150px;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.637);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.button-Principal{
+    color:white;
+    font-size: 40px;
+    font-weight: bold;
+}
