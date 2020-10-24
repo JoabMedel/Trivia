@@ -1,0 +1,17 @@
+@media (max-width: 575.98px) { 
+    h1{
+        font-family: 'Monoton';
+        font-weight: bolder;
+        font-size: 60px;
+        justify-content: center;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.637);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .button-Principal{
+        color:white;
+        font-size: 30px;
+        font-weight: bold;
+        transition: 800ms;
+    }
+ }

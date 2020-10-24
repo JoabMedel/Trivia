@@ -1,3 +1,4 @@
+
 //Variables globales.
 
 //Preguntas
@@ -36,15 +37,23 @@ function getQuestions(){
     const questionDificulty = document.getElementById("dificulty").value;
     const typeQuestion = document.getElementById("type").value;
     fetch(`https://opentdb.com/api.php?amount=${questionsQuantity}&category=${categoryQuestion}&difficulty=${questionDificulty}&type=${typeQuestion}`)
-        .then(response => response.json(removeForm()))
+        .then(response => response.json())
         .then(d => {
-            questions = d.results
+            questions = d.results;
             //paso body de mis preguntas ya el formato armado.
-            printQuiz()
+            if(questions.length === 0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'There are no questions for this selection. Please select other options to continue'
+                  })
+            }else{
+                printQuiz(removeForm())
+            }
         })
-        .catch((error) => {
-            console.error(error);
-         });
+        // .catch((error) => {
+        //     console.error(error);
+        //  });
 }
 
 //Metodo quitar elementos a mi doom. 
@@ -77,6 +86,10 @@ function printQuiz(idButton){
     container.innerHTML += body;
 }
 
+function realoadedAction() {
+    const refresh = location.reload();
+    return refresh;
+}
 
 //Posisicion de mi quiz.
 function cycleQuestions(myquestion) {
@@ -85,6 +98,7 @@ function cycleQuestions(myquestion) {
     let htmFinish = `<div class="score">
                         <div class="style-finish-window">This is Your Hits</div>
                         <div class="style-finish-score">${score}</div>
+                        <button class="btn btn-warning style-button-start shadow-buttons" onclick="realoadedAction()">Play Again</button>
                     </div>`;
     if(position > questions.length -1) {
         return htmFinish;
@@ -92,6 +106,7 @@ function cycleQuestions(myquestion) {
         return html = returnBody(currentQuestion);
     }
 }
+
 
 //Cuerpo de preguntas
 function returnBody(q){
@@ -113,6 +128,7 @@ function returnBody(q){
     correctAnswer = q.correct_answer;
     return body;
 }
+
 
 //Respuestas.
 function answersHTML(correct,incorrects){
